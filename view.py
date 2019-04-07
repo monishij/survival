@@ -20,7 +20,7 @@ class SurvivalGame:
                 self._draw_start_screen()
 
             #second screen
-            self._select_choices()
+#             self._select_choices()
 
             self._handle_events()
 #             self._draw()
@@ -63,7 +63,6 @@ class SurvivalGame:
     def _handle_click(self):
         if self._mode == START_SCREEN:
             pass
-            print(event)
 
 
     def _select_choices(self):
