@@ -2,6 +2,7 @@ import pygame
 # import mechanics
 
 START_SCREEN = 0
+white = (255,255,255)
 
 class SurvivalGame:
     
@@ -31,18 +32,39 @@ class SurvivalGame:
         pixel_width = surface.get_width()
         pixel_height = surface.get_height()
         
-        start_button = pygame.draw.rect(surface, pygame.color.Color("#60cadb"), (200,500,400,100))
-         
+        font = pygame.font.Font(None, 100)
+        start_text = font.render("Start", True, white)
+        # Draws the start button
+        pygame.draw.rect(surface, pygame.color.Color("#60cadb"), (200,500,400,100))
+
+        surface.blit(start_text, (320,520))
         
+        font = pygame.font.Font(None, 180)
+        title1 = font.render("Survival", True, white)
+        title2 = font.render("of the", True, white)
+        title3 = font.render("Fittest", True, white)
+        
+        surface.blit(title1, (150,100))
+        surface.blit(title2, (230,220))
+        surface.blit(title3, (200,340))
+        
+         
     def _handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self._running = False
-        
-        
-        
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self._handle_click()
+                
+    
+    def _handle_click(self):
+        if self._mode == START_SCREEN:
+            pass
             
             
+        
+        
+          
 SurvivalGame().run()
             
 
