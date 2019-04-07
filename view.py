@@ -2,6 +2,10 @@ import pygame
 # import mechanics
 
 START_SCREEN = 0
+BUILD_SCREEN = 1
+GAME_SCREEN = 2
+END_SCREEN = 3
+
 white = (255,255,255)
 
 class SurvivalGame:
@@ -14,10 +18,21 @@ class SurvivalGame:
 
     def run(self):
         pygame.init()
+        pygame.display.set_mode((800, 800))
 
         while self._running:
             if self._mode == START_SCREEN:
                 self._draw_start_screen()
+                
+            elif self._mode == BUILD_SCREEN:
+                surface = pygame.display.get_surface()
+                surface.fill((0,0,0))
+                
+            else:
+                surface = pygame.display.get_surface()
+                surface.fill(white)
+                
+            
 
             #second screen
 #             self._select_choices()
@@ -30,7 +45,6 @@ class SurvivalGame:
 
 
     def _draw_start_screen(self):
-        pygame.display.set_mode((800, 800))
         surface = pygame.display.get_surface()
         pixel_width = surface.get_width()
         pixel_height = surface.get_height()
@@ -62,7 +76,12 @@ class SurvivalGame:
 
     def _handle_click(self):
         if self._mode == START_SCREEN:
-            pass
+            cursor_x, cursor_y = pygame.mouse.get_pos()
+            if cursor_x >= 200 and cursor_x <= 600 \
+            and cursor_y >= 500 and cursor_y <= 600:
+                self._mode = BUILD_SCREEN
+        
+
 
 
     def _select_choices(self):
