@@ -18,6 +18,9 @@ class SurvivalGame:
             if self._mode == START_SCREEN:
                 self._draw_start_screen()
             
+            #second screen
+            self._select_choices()
+            
             self._handle_events()
 #             self._draw()
             pygame.display.flip()
@@ -38,9 +41,17 @@ class SurvivalGame:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self._running = False
+            print(event)
+                
+    
+    def _select_choices(self):
         
+        pygame.display.set_mode((800, 800))
+        surface = pygame.display.get_surface()
+        skinList = pygame.draw.rect(surface, pygame.color.Color("#ffdd7f"), (45,45,200,500))
         
-        
+        font = pygame.font.Font(None, 200)
+        n = font.render("text", False , (255,255,255))
             
             
 SurvivalGame().run()
